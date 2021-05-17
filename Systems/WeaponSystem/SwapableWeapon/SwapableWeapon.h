@@ -36,8 +36,8 @@ protected:
 	UPROPERTY()
 	UWeaponBase* NextWeapon = nullptr;
 
-	UPROPERTY(BlueprintReadOnly)
-	bool bIsAttackInProgress = false;
+	//UPROPERTY(BlueprintReadOnly)
+	//bool bIsAttackInProgress = false;
 
 	UFUNCTION()
 	void OnEndCurrentAttackProgress();

@@ -68,6 +68,9 @@ public:
 	virtual bool GetActionTime_Implementation(FName ActionName, float& OutActionTime) override;
 	virtual float GetTaskEndTime_Implementation() const override;
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	virtual bool IsTaskInProgress() const;
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void OnActionDispatch(const FName& ActionName);
 };

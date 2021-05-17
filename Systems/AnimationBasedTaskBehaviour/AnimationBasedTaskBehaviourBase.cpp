@@ -108,6 +108,11 @@ float UAnimationBasedTaskBehaviourBase::GetTaskEndTime_Implementation() const
 	return TaskEndTime;
 }
 
+bool UAnimationBasedTaskBehaviourBase::IsTaskInProgress() const
+{
+	return bIsTickable;
+}
+
 void UAnimationBasedTaskBehaviourBase::OnActionDispatch_Implementation(const FName& ActionName)
 {
 }

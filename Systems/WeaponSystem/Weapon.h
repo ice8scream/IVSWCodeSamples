@@ -49,8 +49,6 @@ protected:
 	UFUNCTION()
 	virtual void OnAbtBehaviourTaskFlushed(const FName& ActionName);
 
-	bool bSavedCharacterOrientation;
-
 public:
 	UFUNCTION(BlueprintCallable)
 	UShapeBehaviour* GetShapeBehaviour() const;

@@ -42,7 +42,6 @@ void UWeapon::PerformAttack_Implementation(FVector AttackLocation)
 		ACharacter* CharacterActor = Cast<ACharacter>(OwnerActor);
 		if (CharacterActor)
 		{
-			bSavedCharacterOrientation = CharacterActor->GetCharacterMovement()->bOrientRotationToMovement;
 			CharacterActor->GetCharacterMovement()->bOrientRotationToMovement = false;
 		}
 	}
@@ -61,7 +60,7 @@ void UWeapon::BreakAttack_Implementation()
 	ACharacter* CharacterActor = Cast<ACharacter>(OwnerActor);
 	if (CharacterActor)
 	{
-		CharacterActor->GetCharacterMovement()->bOrientRotationToMovement = bSavedCharacterOrientation;
+		CharacterActor->GetCharacterMovement()->bOrientRotationToMovement = true;
 	}
 }
 
@@ -74,7 +73,7 @@ void UWeapon::OnAbtBehaviourTaskFlushed(const FName& ActionName)
 		ACharacter* CharacterActor = Cast<ACharacter>(OwnerActor);
 		if (CharacterActor)
 		{
-			CharacterActor->GetCharacterMovement()->bOrientRotationToMovement = bSavedCharacterOrientation;
+			CharacterActor->GetCharacterMovement()->bOrientRotationToMovement = true;
 		}
 
 		if (Actors.Num())

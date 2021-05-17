@@ -24,9 +24,8 @@ void USwapableWeapon::InitWeapon_Implementation(AActor* WeaponOwner)
 
 void USwapableWeapon::PerformAttack_Implementation(FVector AttackLocation)
 {
-	if (!bIsAttackInProgress)
+	if (!GetNearestFinalWeapon()->GetAbtBehaviour()->IsTaskInProgress())
 	{
-		bIsAttackInProgress = true;
 		Super::PerformAttack_Implementation(AttackLocation);
 	}
 }
@@ -60,13 +59,14 @@ void USwapableWeapon::ActualizeCurrentWeapon()
 void USwapableWeapon::OnEndCurrentAttackProgress()
 {
 	ActualizeCurrentWeapon();
-	bIsAttackInProgress = false;
+	//bIsAttackInProgress = false;
 }
 
 void USwapableWeapon::SwapWeapon_Implementation(const FName& WeaponName)
 {
 	NextWeapon = Weapons[WeaponName];
-	if (!bIsAttackInProgress)
+	
+	if (!GetNearestFinalWeapon()->GetAbtBehaviour()->IsTaskInProgress())
 	{
 		ActualizeCurrentWeapon();
 	}
